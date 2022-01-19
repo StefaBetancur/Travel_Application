@@ -1,0 +1,59 @@
+﻿<!--@@1 Inicio: Importamos el modelo usuario y definimos un titulo-->
+@model DEMO03_LOGIN.Models.ClsUsuario
+@{
+    var title = "Acceso al Sistema";
+    ViewData["Title"] = title;
+    Layout = null;
+}
+<!--@@1 Final-->
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>@title</title>
+    <!--@@2 Inicio: Importamos la librería js jQuery, el css bootstrap y asimismo posicionamos el formulario-->
+    <link href="/lib/bootstrap-4.3.1/dist/css/bootstrap.css" rel="stylesheet" />
+    <script src="/lib/jquery/dist/jquery.min.js"></script>
+
+    <style>
+        .form-signin {
+            margin: 0 auto;
+            max-width: 330px;
+            padding: 15px;
+        }
+
+            .form-signin h4 {
+                text-align: center;
+            }
+    </style>
+    <!--@@2 Final-->
+</head>
+    <body>
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <h3>LOGIN MVC ASP.Net Core 3.1</h3><!--Definimos una cabecera en la página-->
+        </div>
+    </div>
+    <div class="container body-content">
+        <!--@@3 Inicio: Método de tipo post para validar o iniciar el acceso a la aplicación-->
+        @using (Html.BeginForm("Login", "Login", FormMethod.Post, new { @class = "form-signin", role = "form" }))
+            {
+                @Html.AntiForgeryToken()
+                <h4>@title</h4>
+
+                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+                @Html.TextBoxFor(m => m.usuario, new { @class = "form-control", placeholder = "Usuario" })
+                @Html.ValidationMessageFor(m => m.usuario, "", new { @class = "text-danger" })
+                <br />
+                @Html.PasswordFor(m => m.contrasena, new { @class = "form-control", placeholder = "Contraseña" })
+                @Html.ValidationMessageFor(m => m.contrasena, "", new { @class = "text-danger" })
+                <br />
+                <input type="submit" value="Iniciar sesión" class="btn btn-lg btn-primary btn-block" />
+            }
+        <!--@@3 Final-->
+        </div>
+    </body>
+</html>

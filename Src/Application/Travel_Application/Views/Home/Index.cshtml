@@ -1,0 +1,83 @@
+﻿@model IEnumerable<Travel_Application.Domain.Model.Models.ClsLibro>
+@{
+    var title = "LISTAR LIBROS";
+    ViewData["Title"] = title;
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="row justify-content-center">
+    <h4>@title</h4>
+</div>
+<div class="container">
+
+        <div class="row justify-content-center">
+                    @using (Html.BeginForm("Product", "Product", FormMethod.Post, new { id = "product", @class = "form-signin"}))
+                    {
+                        <a href="javascript:document.getElementById('product').submit()"><input type="button" value="Agregar o Modificar"></a>
+                    }
+        </div>
+    </div>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                Id
+            </th>
+            <th>
+                Autor
+            </th>
+            <th>
+                Apellidos
+            </th>
+            <th>
+                Titulo
+            </th>
+            <th>
+                Sinopsis
+            </th>
+            <th>
+                Numero de Paginas
+            </th>
+            <th>
+                Editorial
+            </th>
+            <th>
+                Sede
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+		@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.id)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.nombre)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.apellidos)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.titulo)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.sinopsis)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.n_paginas)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.nombre_editorial)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.sede)
+            </td>
+
+        </tr>}
+		
+          
+		   
+    </tbody>
+</table>

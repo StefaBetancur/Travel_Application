@@ -1,0 +1,45 @@
+﻿@using Microsoft.AspNetCore.Http
+@{
+    var vUser = Context.Session.GetString("_User");
+}
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>@ViewData["Title"]</title>
+    <link href="/lib/bootstrap-4.3.1/dist/css/bootstrap.css" rel="stylesheet" />
+    <script src="/lib/jquery/dist/jquery.min.js"></script>
+</head>
+<body>
+    <div class="container">
+
+        <div class="row justify-content-lg-center">
+            <div class="row">
+                <div class="col-12 badge-info">
+                    <h3>LOGIN MVC ASP.Net Core 3.1</h3><!--Cabera de la página-->
+                </div>
+            </div>
+        </div>
+
+        <div class="row justify-content-lg-end">
+            <div class="row">
+                <div class="col">
+                    <p>USUARIO: @vUser</p>
+                </div>
+                <div class="col">
+
+                    @using (Html.BeginForm("LogOff", "Login", FormMethod.Post, new { id = "logoutForm", @class = "form-css" }))
+                    {
+                        <a href="javascript:document.getElementById('logoutForm').submit()"><i class="fa fa-fw fa-power-off"></i> Cerrar Sesión</a>
+                    }
+                </div>
+              </div>
+        </div>
+    </div>
+
+    <div class="container body-content">
+        @RenderBody()
+        <hr />
+    </div>
+</body>
+</html>

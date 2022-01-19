@@ -1,0 +1,69 @@
+﻿@model Travel_Application.Domain.Model.Models.ClsLibro
+@{
+    var title = "Agregar y Modificar Libros";
+    ViewData["Title"] = title;
+    Layout = null;
+}
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>@title</title>The nombre field is required
+    <link href="/lib/bootstrap-4.3.1/dist/css/bootstrap.css" rel="stylesheet" />
+    <script src="/lib/jquery/dist/jquery.min.js"></script>
+
+    <style>
+        .form-signin {
+            margin: 0 auto;
+            max-width: 330px;
+            padding: 15px;
+        }
+
+            .form-signin h4 {
+                text-align: center;
+            }
+    </style>
+</head>
+    <body>
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <h3>Agregar o Modificar Libros</h3>
+        </div>
+    </div>
+    <div class="container body-content">
+        @using (Html.BeginForm("Product", "Product", FormMethod.Post, new { @class = "form-signin", role = "form" }))
+        {
+    @Html.AntiForgeryToken()
+
+
+                    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                                    <br />
+                                                    @Html.TextBoxFor(m => m.id, new { @class = "form-control", placeholder = "Id" })
+                                                                    @Html.ValidationMessageFor(m => m.id, "", new { @class = "text-danger" })
+                                                                                    <br />
+                                                                                                    @Html.TextBoxFor(m => m.nombre, new { @class = "form-control", placeholder = "Autor" })
+                                                                                                                    @Html.ValidationMessageFor(m => m.nombre, "", new { @class = "text-danger" })
+                                                                                                                                    <br />
+                                                                                                                                                    @Html.TextBoxFor(m => m.apellidos, new { @class = "form-control", placeholder = "Apellido" })
+                                                                                                                                                                    @Html.ValidationMessageFor(m => m.apellidos, "", new { @class = "text-danger" })
+                                                                                                                                                                                                                          <br />
+                                                                                                                                                                                                                                                    @Html.TextBoxFor(m => m.titulo, new { @class = "form-control", placeholder = "Titulo del Libro" })
+                                                                                                                                                                                                                                                                    @Html.ValidationMessageFor(m => m.titulo, "", new { @class = "text-danger" })
+                                                                                                                                                                                                                                                                                    <br />
+                                                                                                                                                                                                                                                                                                    @Html.TextBoxFor(m => m.sinopsis, new { @class = "form-control", placeholder = "Sinopsis" })
+                                                                                                                                                                                                                                                                                                                    @Html.ValidationMessageFor(m => m.sinopsis, "", new { @class = "text-danger" })
+                                                                                                                                                                                                                                                                                                                                    <br />
+                                                                                                                                                                                                                                                                                                                                                    @Html.TextBoxFor(m => m.n_paginas, new { @class = "form-control", placeholder = "Numero de Paginas" })
+                                                                                                                                                                                                                                                                                                                                                                    @Html.ValidationMessageFor(m => m.n_paginas, "", new { @class = "text-danger" })
+                                                                                                                                                                                                                                                                                                                                                                                    <br />
+                                                                                                                                                                                                                                                                                                                                                                                                    @Html.TextBoxFor(m => m.nombre_editorial, new { @class = "form-control", placeholder = "Editorial" })
+                                                                                                                                                                                                                                                                                                                                                                                                                    @Html.ValidationMessageFor(m => m.nombre_editorial, "", new { @class = "text-danger" })
+                                                                                                                                                                                                                                                                                                                                                                                                                                    <br />
+                                                                                                                                                                                                                                                                                                                                                                                                                                                    @Html.TextBoxFor(m => m.sede, new { @class = "form-control", placeholder = "Sede" })
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                    @Html.ValidationMessageFor(m => m.sede, "", new { @class = "text-danger" })
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    <br />
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    <input type="submit" value="Confirmar" class="btn btn-lg btn-primary btn-block" />}
+    </div>
+    </body>
+</html>

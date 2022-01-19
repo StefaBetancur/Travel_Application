@@ -1,0 +1,66 @@
+﻿@model IEnumerable<Impexium_Application.Models.ClsProducto>
+@{
+    var title = "LISTAR PRODUCTOS";
+    ViewData["Title"] = title;
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="row justify-content-center">
+    <h4>@title</h4>
+    <a href="../Controllers/ProductController.cs"><input type="button" value="Ir"></a>
+    @*<button onclick="..\prueba\impexium\Impexium_Application\Impexium_Application\Views\Product\Product.cshtml">Llévame a otro lado</button>*@
+</div>
+<div class="container">
+
+        <div class="row justify-content-lg-end">
+            <div class="row">
+                <div class="col">
+
+                    @using (Html.BeginForm("Product", "Product", FormMethod.Post, new {@class = "form-signin", role = "form"}))
+                    {
+                        <a href="javascript:document.getElementById('form-signin').submit()"><i class="btn btn-lg btn-primary btn-block"></i> IR</a>
+                    }
+                </div>
+              </div>
+        </div>
+    </div>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                Id
+            </th>
+            <th>
+                Nombre del producto
+            </th>
+            <th>
+                Descripcion
+            </th>
+            <th>
+                Cantidad Disponible
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+		@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.id)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.nombre)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.descripcion)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.cantidad)
+            </td>
+			
+        </tr>}
+		
+          
+		   
+    </tbody>
+</table>
